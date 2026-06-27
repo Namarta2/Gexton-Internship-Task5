@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineView – Movie Explorer Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="brand-logo">CineView</h1>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="#" class="nav-item">Popular</a>
+                <a href="#" class="nav-item">Top Rated</a>
+            </nav>
+
+            <div class="controls-group">
+                <select id="categorySelect" class="dropdown-control">
+                    <option value="popular">Popular Movies</option>
+                    <option value="top_rated">Top Rated Movies</option>
+                    <option value="upcoming">Upcoming Movies</option>
+                    <option value="now_playing">Now Playing Movies</option>
+                </select>
+
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search movies..." class="search-input">
+                    <button id="searchButton" class="search-btn">Search</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <section class="api-panel" id="apiPanel">
+            <h3>API Token Setup</h3>
+            <p>To view movie data, please enter your personal TMDB API key below:</p>
+            <div class="api-input-row">
+                <input type="text" id="apiKeyInput" placeholder="Enter TMDB API Key Here..." class="search-input">
+                <button id="saveKeyBtn" class="search-btn">Save Key</button>
+            </div>
+        </section>
+
+        <div id="loadingSpinner" class="spinner-container hidden">
+            <div class="spinner"></div>
+        </div>
+
+        <div id="messageDisplay" class="status-message hidden"></div>
+
+        <section id="movieGrid" class="movie-grid"></section>
+    </main>
+
+    <div id="movieModal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <button id="closeModalBtn" class="close-modal-btn">&times;</button>
+            
+            <div class="modal-body">
+                <div class="modal-left">
+                    <img id="modalPoster" src="" alt="Movie Poster" class="modal-img">
+                </div>
+                <div class="modal-right">
+                    <h2 id="modalTitle">Movie Title</h2>
+                    <p id="modalTagline" class="movie-tagline"></p>
+                    
+                    <div class="movie-meta-info">
+                        <span id="modalReleaseDate"><strong>Release Date:</strong> </span>
+                        <span id="modalRuntime"><strong>Runtime:</strong> </span>
+                        <span id="modalRating"><strong>Rating:</strong> </span>
+                    </div>
+
+                    <div id="modalGenres" class="genres-container"></div>
+
+                    <h3>Overview</h3>
+                    <p id="modalOverview" class="movie-overview-text"></p>
+
+                    <h3>Official Video Trailer</h3>
+                    <div class="video-wrapper">
+                        <div id="trailerContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
